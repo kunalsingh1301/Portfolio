@@ -1,4 +1,5 @@
 import { lefsidebarsvg ,leftsidesvgend} from '@/constants/leftside.js'
+import Link from 'next/link'
 function Leftsidebar() {
     return (
         <section className="leftsidebar custom-scrollbar justify-between">
@@ -6,10 +7,12 @@ function Leftsidebar() {
                 {
                     lefsidebarsvg && lefsidebarsvg.map((item) => {
                         return (
+                            <Link key={item.id} href={`${item.route}`}>
                             <div
-                            key={item.id}
+                            
                                 dangerouslySetInnerHTML={{ __html: item.svg }}
                             />
+                            </Link>
                         )
                     })
                 }

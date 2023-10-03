@@ -1,4 +1,5 @@
 "use client"
+
 import React, { useState } from 'react';
 import {
     Collapsible,
@@ -6,6 +7,8 @@ import {
     CollapsibleTrigger,
 } from '@/components/ui/collapsible';
 import { leftside2 } from '@/constants/leftside';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 function Leftsidebartwo() {
     const [isCollapsed, setIsCollapsed] = useState(true); // Initialize as collapsed
@@ -13,6 +16,9 @@ function Leftsidebartwo() {
     const toggleCollapsible = () => {
         setIsCollapsed(!isCollapsed);
     };
+    const pathname = usePathname();
+
+    
 
     return (
         <section className="leftsidebar2">
@@ -29,12 +35,17 @@ function Leftsidebartwo() {
                     {leftside2 &&
                         leftside2.map((item) => {
                             return (
+                                
+                                
                                 <div key={item.id} className='flex'>
                                     <div
                                         dangerouslySetInnerHTML={{ __html: item.svg }}
                                     />
+                                    <Link  href={`${item.route}`}>
                                     <p>{item.desc}</p>
+                                    </Link>
                                 </div>
+                                
                             );
                         })}
                 </CollapsibleContent>
